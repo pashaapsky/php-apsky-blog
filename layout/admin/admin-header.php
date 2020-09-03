@@ -1,13 +1,9 @@
 <?php
 use Models\User;
-use function helpers\checkModerationGrants;
 use function helpers\setActiveAdminNavigation;
 
-if (!checkModerationGrants()) {
-    header("Location: /admin/auth");
-}
+include_once $_SERVER['DOCUMENT_ROOT'] . '/layout/base/admin-header.php';
 
-include_once $_SERVER['DOCUMENT_ROOT'] . '/layout/base/header.php';
 if (isset($_SESSION['login']) && $_SESSION['login'] === 'yes') {
     $user = User::where('email', $_COOKIE['login'])->first();
 }
