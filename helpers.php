@@ -77,7 +77,7 @@ function setActiveAdminNavigation($page) {
 };
 
 function checkModerationGrants() {
-    if (isset($_COOKIE['grants']) && ($_COOKIE['grants'] === 'admin' || $_COOKIE['grants'] === 'manager')) {
+    if (isset($_COOKIE['grants']) && ($_COOKIE['grants'] === 'admin' || $_COOKIE['grants'] === 'manager') && (isset($_SESSION['login']) && $_SESSION['login'] === 'yes')) {
         return true;
     } else {
         return false;
@@ -85,10 +85,14 @@ function checkModerationGrants() {
 };
 
 function checkEditGrants($user) {
-    if (isset($_COOKIE['grants']) && ($_COOKIE['grants'] === 'admin' || $_COOKIE['grants'] === 'manager')) {
-        return true;
-    } elseif (isset($_COOKIE['login']) && ($_COOKIE['login']) === $user->email) {
-        return true;
+    if ((isset($_SESSION['login']) && $_SESSION['login'] === 'yes')) {
+        if (isset($_COOKIE['grants']) && ($_COOKIE['grants'] === 'admin' || $_COOKIE['grants'] === 'manager')) {
+            return true;
+        } elseif (isset($_COOKIE['login']) && ($_COOKIE['login']) === $user->email) {
+            return true;
+        } else {
+            return false;
+        }
     } else {
         return false;
     }
