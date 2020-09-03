@@ -47,15 +47,21 @@ class AuthController
             $isModerator = AuthCategoryUsers::where('user_id', $user->id)->where('category_id', '2')->get()->first();
 
             if (!is_null($isAdmin)) {
+                session_name('session_id');
+                session_start();
                 setcookie('login', $user->email, time() + (3600 * 24 * 30), '/');
                 setcookie('grants', 'admin', time() + (3600 * 24 * 30), '/');
+                $_SESSION['login']='yes';
                 echo 'Sign In Success';
                 return;
             }
 
             if (!is_null($isModerator)) {
+                session_name('session_id');
+                session_start();
                 setcookie('login', $user->email, time() + (3600 * 24 * 30), '/');
                 setcookie('grants', 'manager', time() + (3600 * 24 * 30), '/');
+                $_SESSION['login']='yes';
                 echo 'Sign In Success';
                 return;
             }

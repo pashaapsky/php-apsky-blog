@@ -540,7 +540,7 @@ $(document).ready(function () {
         event.preventDefault();
 
         if (confirm("Delete this user?")) {
-            location.href = location.href = this.href;
+            location.href = this.href;
         }
     });
 

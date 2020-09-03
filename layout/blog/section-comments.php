@@ -81,5 +81,5 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/layout/pagination/comments-pagination
         </li>
     </ul>
 
-    <button class="btn btn-outline-success ml-auto js-new-comment-btn" style="display: block" type="button" data-login="<?= isset($_COOKIE['login']) ? 'yes' : 'no'?>">new comment</button>
+    <button class="btn btn-outline-success ml-auto js-new-comment-btn" style="display: block" type="button" data-login="<?= (isset($_SESSION['login']) && $_SESSION['login'] === 'yes') ? 'yes' : 'no' ?>">new comment</button>
 </section>

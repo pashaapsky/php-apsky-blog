@@ -25,10 +25,12 @@ if (!empty($_POST)) {
 
                 $createdUserId = $user->id;
                 AuthController::createAuthCategoryUsersField($createdUserId);
-
+                session_name('session_id');
+                session_start();
                 setcookie('login', $email, time() + (3600 * 24 * 30), '/');
                 setcookie('grants', 'registered', time() + (3600 * 24 * 30), '/');
                 $grants = 'registered';
+                $_SESSION['login']='yes';
 
                 echo 'Registration completed';
             } else {
