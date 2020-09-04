@@ -17,7 +17,7 @@ if (!empty($_POST)) {
             echo 'This page name has already use. Please choice another.';
             return;
         } else {
-            $page->name = $_POST['name'];
+            $page->name = htmlspecialchars($_POST['name']);
         }
     } else {
         echo 'Page name is required';
@@ -25,7 +25,7 @@ if (!empty($_POST)) {
     }
 
     if (isset($_POST['text']) && !empty($_POST['text'])) {
-        $page->text = $_POST['text'];
+        $page->text = htmlspecialchars($_POST['text']);
     } else {
         echo 'Page text is required';
         return;

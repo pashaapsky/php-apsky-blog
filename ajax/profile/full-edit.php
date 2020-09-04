@@ -14,14 +14,14 @@ if (!empty($_POST)) {
     $user = User::where('username', $_POST['lastUserName'])->first();
 
     if (isset($_POST['firstname']) && !empty($_POST['firstname'])) {
-        $user->firstname = $_POST['firstname'];
+        $user->firstname = htmlspecialchars($_POST['firstname']);
     } else {
         echo 'User firstname is required';
         return;
     }
 
     if (isset($_POST['secondname']) && !empty($_POST['secondname'])) {
-        $user->secondname = $_POST['secondname'];
+        $user->secondname = htmlspecialchars($_POST['secondname']);
     } else {
         echo 'User secondname is required';
         return;
@@ -34,7 +34,7 @@ if (!empty($_POST)) {
             echo 'This username has already use. Please choice another.';
             return;
         } else {
-            $user->username = $_POST['username'];
+            $user->username = htmlspecialchars($_POST['username']);
         }
     } else {
         echo 'Username is required';

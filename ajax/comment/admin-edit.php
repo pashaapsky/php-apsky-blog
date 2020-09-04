@@ -10,7 +10,7 @@ if (!empty($_POST)) {
     $comment = Comment::find($_POST['comment_id']);
 
     if (isset($_POST['content']) && !empty($_POST['content'])) {
-        $comment->text = $_POST['content'];
+        $comment->text = htmlspecialchars($_POST['content']);
         $comment->save();
         echo 'Success';
     } else {

@@ -25,7 +25,7 @@ if(!empty($_POST)) {
     }
 
     if (isset($_POST['comment-text']) && !empty($_POST['comment-text'])) {
-        $comment->text = $_POST['comment-text'];
+        $comment->text = htmlspecialchars($_POST['comment-text']);
     } else {
         echo 'Comment text is required';
         return;

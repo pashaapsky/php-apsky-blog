@@ -17,14 +17,14 @@ if (!empty($_POST)) {
     $user = User::where('email', $_COOKIE['login'])->first();
 
     if(isset($_POST['name']) && !empty($_POST['name'])) {
-        $blog->name = $_POST['name'];
+        $blog->name = htmlspecialchars($_POST['name']);
     } else {
         echo 'Blog Name is required';
         return;
     }
 
     if(isset($_POST['content']) && !empty($_POST['content'])) {
-        $blog->text = $_POST['content'];
+        $blog->text = htmlspecialchars($_POST['content']);
     } else {
         echo 'Blog Content is required';
         return;

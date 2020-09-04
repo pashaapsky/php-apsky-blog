@@ -8,9 +8,9 @@ use Models\User;
 
 if (!empty($_POST)) {
     if ($_POST['password'] === $_POST['password-confirm']) {
-        $firstName = $_POST['firstName'];
-        $lastName = $_POST['lastName'];
-        $userName = $_POST['userName'];
+        $firstName = htmlspecialchars($_POST['firstName']);
+        $lastName = htmlspecialchars($_POST['lastName']);
+        $userName = htmlspecialchars($_POST['userName']);
         $password = password_hash($_POST['password'], 1);
         $email = $_POST['email'];
 
